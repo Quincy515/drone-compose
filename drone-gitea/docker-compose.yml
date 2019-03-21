@@ -14,7 +14,10 @@ services:
       - DRONE_OPEN=true
       - DRONE_DEBUG=true
       - DRONE_GIT_ALWAYS_AUTH=false
+<<<<<<< HEAD
       - DRONE_GITEA=true
+=======
+>>>>>>> 9b3cae20a2070cc9ab9f9ee8ebf09ca5731c462a
       - DRONE_GITEA_SKIP_VERIFY=false
       - DRONE_GITEA_SERVER=http://git:3000
       - DRONE_PROVIDER=git
