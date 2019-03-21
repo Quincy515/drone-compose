@@ -1,0 +1,52 @@
+2019/03/21 02:15:27 [I] Failed authentication attempt for custer from 114.64.253.2
+2019/03/21 02:15:34 [I] Failed authentication attempt for custer from 114.64.253.2
+2019/03/21 02:15:42 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 02:16:59 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 02:17:03 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:00:23 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:00:47 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:00:47 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:05:36 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:05:36 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:10:25 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:10:58 [I] New random avatar created: 2
+2019/03/21 03:10:58 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:11:05 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:14:26 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:15:30 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:19:14 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:28:41 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:31:37 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:31:37 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/21 03:45:01 [I] Log Mode: File(Info)
+2019/03/21 03:45:01 [I] XORM Log Mode: File(Info)
+2019/03/21 03:45:01 [I] Cache Service Enabled
+2019/03/21 03:45:01 [I] Session Service Enabled
+2019/03/21 03:45:01 [I] Mail Service Enabled
+2019/03/21 03:45:01 [I] Register Mail Service Enabled
+2019/03/21 03:45:01 [I] Notify Mail Service Enabled
+2019/03/21 03:45:01 [I] Beginning ORM engine initialization.
+2019/03/21 03:45:01 [I] ORM engine initialization attempt #1/10...
+2019/03/21 03:45:01 [I] ORM engine initialization successful!
+2019/03/21 03:45:02 [I] Git Version: 2.20.1
+2019/03/21 03:45:02 [I] SQLite3 Supported
+2019/03/21 03:45:02 [I] Run Mode: Production
+2019/03/21 03:45:03 [I] Listen: http://0.0.0.0:3000
+2019/03/21 03:45:03 [I] LFS server enabled
+2019/03/21 04:02:34 [I] Log Mode: File(Info)
+2019/03/21 04:02:34 [I] XORM Log Mode: File(Info)
+2019/03/21 04:02:34 [I] Cache Service Enabled
+2019/03/21 04:02:34 [I] Session Service Enabled
+2019/03/21 04:02:34 [I] Mail Service Enabled
+2019/03/21 04:02:34 [I] Register Mail Service Enabled
+2019/03/21 04:02:34 [I] Notify Mail Service Enabled
+2019/03/21 04:02:34 [I] Beginning ORM engine initialization.
+2019/03/21 04:02:34 [I] ORM engine initialization attempt #1/10...
+2019/03/21 04:02:34 [I] Backing off for 3 seconds
+2019/03/21 04:02:37 [I] ORM engine initialization attempt #2/10...
+2019/03/21 04:02:38 [I] ORM engine initialization successful!
+2019/03/21 04:02:39 [I] Git Version: 2.20.1
+2019/03/21 04:02:39 [I] SQLite3 Supported
+2019/03/21 04:02:39 [I] Run Mode: Production
+2019/03/21 04:02:40 [I] Listen: http://0.0.0.0:3000
+2019/03/21 04:02:40 [I] LFS server enabled

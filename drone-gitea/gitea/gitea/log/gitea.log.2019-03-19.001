@@ -1,0 +1,20 @@
+2019/03/18 15:51:05 [I] Log Mode: File(Info)
+2019/03/18 15:51:05 [I] XORM Log Mode: File(Info)
+2019/03/18 15:51:05 [I] Cache Service Enabled
+2019/03/18 15:51:05 [I] Session Service Enabled
+2019/03/18 15:51:05 [I] Mail Service Enabled
+2019/03/18 15:51:05 [I] Register Mail Service Enabled
+2019/03/18 15:51:05 [I] Notify Mail Service Enabled
+2019/03/18 15:51:05 [I] Beginning ORM engine initialization.
+2019/03/18 15:51:05 [I] ORM engine initialization attempt #1/10...
+2019/03/18 15:51:05 [I] ORM engine initialization successful!
+2019/03/18 15:51:07 [I] Git Version: 2.20.1
+2019/03/18 15:51:07 [I] Git config user.name set to Gitea
+2019/03/18 15:51:07 [I] Git config user.email set to gitea@fake.local
+2019/03/18 15:51:07 [I] SQLite3 Supported
+2019/03/18 15:51:07 [I] Run Mode: Production
+2019/03/18 15:51:07 [I] First-time run install finished!
+2019/03/18 15:51:07 [I] New random avatar created: 1
+2019/03/18 15:51:08 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/18 17:05:59 [...s/context/context.go:149 NotFoundOrServerError()] [E] GetRepositoryByOwnerAndName: repository does not exist [id: 0, uid: 0, owner_name: .., name: ..]
+2019/03/18 17:05:59 [...s/context/context.go:149 NotFoundOrServerError()] [E] GetRepositoryByOwnerAndName: repository does not exist [id: 0, uid: 0, owner_name: .., name: ..]

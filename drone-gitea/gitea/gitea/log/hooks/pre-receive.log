@@ -1,0 +1,4 @@
+2019/03/21 02:55:06 [T] GetProtectedBranchBy: http://localhost:3000/api/internal/branch/1/master
+2019/03/21 03:13:15 [T] GetProtectedBranchBy: http://localhost:3000/api/internal/branch/2/master
+2019/03/21 03:25:01 [T] GetProtectedBranchBy: http://localhost:3000/api/internal/branch/2/master
+2019/03/21 03:30:20 [T] GetProtectedBranchBy: http://localhost:3000/api/internal/branch/3/master

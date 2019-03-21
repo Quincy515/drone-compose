@@ -1,0 +1,7 @@
+2019/03/19 01:26:02 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/19 01:26:19 [I] Failed authentication attempt for custer from 114.64.253.2
+2019/03/19 01:26:27 [I] Failed authentication attempt for custer from 114.64.253.2
+2019/03/19 01:27:02 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/19 01:27:47 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/19 12:17:21 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
+2019/03/19 12:18:13 [.../api/v1/user/user.go:171 GetUserHeatmapData()] [E] GetUserHeatmapDataByUser: Error 1305: FUNCTION gitea.strftime does not exist
