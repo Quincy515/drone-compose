@@ -1,0 +1,23 @@
+# unifying the coding style for different editors and IDEs => editorconfig.org
+
+; indicate this is the root of the project
+root = true
+
+###########################################################
+; common
+###########################################################
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+###########################################################
+; markdown
+###########################################################
+
+[*.md]
+trim_trailing_whitespace = false

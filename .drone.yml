@@ -1,0 +1,45 @@
+kind: pipeline
+name: default
+
+steps:
+- name: docker-env
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run
+  commands:
+  - sleep 5 # give docker enough time to start
+  - docker ps -a
+- name: docker-compose-env
+  image: docker/compose:1.23.2
+  volumes:
+  - name: docker_sock
+    path: /var/run/docker.sock
+  commands:
+    - docker-compose -v
+- name: dingtalk
+  image: lddsb/drone-dingtalk-message
+  settings:
+    token: 8c2421d5cb373e* # 钉钉群聊机器人webhook的token
+    type: markdown
+    message_color: true
+    message_pic: true
+    sha_link: true
+  when:
+    status: [success, failure]
+services:
+- name: docker
+  image: docker:dind
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+volumes:
+- name: dockersock
+  temp: {}
+- name: docker_sock
+  host:
+    path: /var/run/docker.sock
+
+

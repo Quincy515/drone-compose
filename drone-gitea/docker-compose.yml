@@ -1,76 +1,92 @@
-version: '3'
+version: "3.7"
 services:
-  drone-server:
-    image: drone/drone:1.0.0-rc.6
-    container_name: drone-server
-    restart: always
+  nginx:
+    image: nginx:alpine
+    container_name: drone_nginx
     ports:
       - "80:80"
-    networks:
-      - cinet
-    volumes:
-      - ./drone:/var/lib/drone/
-    environment:
-      - DRONE_OPEN=true
-      - DRONE_DEBUG=true
-      - DRONE_GIT_ALWAYS_AUTH=false
-<<<<<<< HEAD
-      - DRONE_GITEA=true
-=======
->>>>>>> 9b3cae20a2070cc9ab9f9ee8ebf09ca5731c462a
-      - DRONE_GITEA_SKIP_VERIFY=false
-      - DRONE_GITEA_SERVER=http://git:3000
-      - DRONE_PROVIDER=git
-      - DRONE_SERVER_PROTO=http
-      - DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw
-      - DRONE_SERVER_HOST=custercode.com
-      - DRONE_RUNNER_CAPACITY=2
-  git:
-    image: gitea/gitea:latest
-    container_name: git
     restart: always
     networks:
-      - cinet
-    ports:
-      - "1022:22"
-      - "3000:3000"
+      - dronenet
     volumes:
-      - ./gitea:/data
-    depends_on:
-      - mysql
+      - ./nginx/my.conf:/etc/nginx/conf.d/default.conf:rw
   mysql:
-    networks:
-      - cinet
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: "P@ssw0rd"
-      MYSQL_USER: 'custer'
-      MYSQL_PASS: 'P@ssw0rd'
-      TZ: Asia/Shanghai
-    image: "docker.io/mysql:latest"
+    image: mysql:latest
     restart: always
-    volumes:
-      - "./mysql/db:/var/lib/mysql"
-      - "./mysql/conf:/etc/my.cnf"
-      - "./mysql/logs:/var/log/mysql/"
-      - "./mysql/init:/docker-entrypoint-initdb.d/"
+    container_name: drone_mysql
     ports:
       - "3306:3306"
-  drone-agent:
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=drone
+      - MYSQL_USER=drone
+      - MYSQL_PASSWORD=drone_password
     networks:
-      - cinet
-    container_name: drone-agent
-    restart: always
-    image: drone/agent:1.0.0-rc.6
+      - dronenet
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./mysql/conf:/etc/my.cnf:rw
+      - ./mysql/data:/var/lib/mysql/:rw
+      - ./mysql/logs:/var/log/mysql/:rw
+      - ./mysql/init:/docker-entrypoint-initdb.d/rw
+  memcache:
+    image: memcached:alpine
+    container_name: memcache
+    restart: always
+    networks:
+      - dronenet
+  gitea:
+    image: gitea/gitea:latest
+    restart: always
+    container_name: gitea
+    networks:
+      - dronenet
+    ports:
+      - "1022:22" #git服务对外使用22端口会更加方便
+      - "3000:3000"
+    volumes:
+      - ./gitea:/data:rw #gitea的data数据应该做持久化，映射到宿主机磁盘上
+    depends_on:
+      - mysql
+  drone-server:
+    image: drone/drone:1.0.0-rc.6 #不要用latest,latest并非稳定版本
+    container_name: drone_server
+    networks:
+      - dronenet
+    ports:
+      - "8080:80"
+      - 9000
+    volumes:
+      - ./drone:/var/lib/drone/:rw
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    restart: always
+    environment:
+      - DRONE_DEBUG=true
+      - DRONE_DATABASE_DATASOURCE=drone:drone_password@tcp(drone_mysql:3306)/drone?parseTime=true   #mysql配置，要与上边mysql容器中的配置一致
+      - DRONE_DATABASE_DRIVER=mysql
+      - DRONE_GITEA_SKIP_VERIFY=false
+      - DRONE_GITEA_SERVER=http://gitea:3000
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RPC_SECRET=YOU_KEY_ALQU2M0KdptXUdTPKcEw  #RPC秘钥
+      - DRONE_SERVER_PROTO=http #这个配置决定了你激活时仓库中的webhook地址的proto
+      - DRONE_SERVER_HOST=custercode.com
+      - DRONE_USER_CREATE=username:custer,admin:true  #管理员账号，是你想要作为管理员的Gitea用户名
+  drone-agent:
+    image: drone/agent:1.0.0-rc.6
+    container_name: drone_agent
+    restart: always
+    networks:
+      - dronenet
     depends_on:
       - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
     environment:
-      - DRONE_RPC_SERVER=http://drone-server
-      - DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw
+      - DRONE_RPC_SERVER=http://drone_server:9000
+      - DRONE_RPC_SECRET=YOU_KEY_ALQU2M0KdptXUdTPKcEw
       - DRONE_DEBUG=true
-      - DRONE_RUNNER_CAPACITY=2
-
+      - DRONE_LOGS_DEBUG=true
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_NOCOLOR=false
 networks:
-    cinet:
+  dronenet:

@@ -1,0 +1,73 @@
+version: '3'
+services:
+  drone-server:
+    image: drone/drone:1.0.0-rc.6
+    container_name: drone-server
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - cinet
+    volumes:
+      - ./drone:/var/lib/drone/
+    environment:
+      - DRONE_OPEN=true
+      - DRONE_DEBUG=true
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_GITEA=true
+      - DRONE_GITEA_SKIP_VERIFY=false
+      - DRONE_GITEA_SERVER=http://git:3000
+      - DRONE_PROVIDER=git
+      - DRONE_SERVER_PROTO=http
+      - DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw
+      - DRONE_SERVER_HOST=custercode.com
+      - DRONE_RUNNER_CAPACITY=2
+  git:
+    image: gitea/gitea:latest
+    container_name: git
+    restart: always
+    networks:
+      - cinet
+    ports:
+      - "1022:22"
+      - "3000:3000"
+    volumes:
+      - ./gitea:/data
+    depends_on:
+      - mysql
+  mysql:
+    networks:
+      - cinet
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "P@ssw0rd"
+      MYSQL_USER: 'custer'
+      MYSQL_PASS: 'P@ssw0rd'
+      TZ: Asia/Shanghai
+    image: "docker.io/mysql:latest"
+    restart: always
+    volumes:
+      - "./mysql/db:/var/lib/mysql"
+      - "./mysql/conf:/etc/my.cnf"
+      - "./mysql/logs:/var/log/mysql/"
+      - "./mysql/init:/docker-entrypoint-initdb.d/"
+    ports:
+      - "3306:3306"
+  drone-agent:
+    networks:
+      - cinet
+    container_name: drone-agent
+    restart: always
+    image: drone/agent:1.0.0-rc.6
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      - drone-server
+    environment:
+      - DRONE_RPC_SERVER=http://drone-server
+      - DRONE_RPC_SECRET=ALQU2M0KdptXUdTPKcEw
+      - DRONE_DEBUG=true
+      - DRONE_RUNNER_CAPACITY=2
+
+networks:
+    cinet:
